@@ -224,6 +224,25 @@ solarproxy
 - the MQTT sensor uses `Last Polled`, not the Supervisor's internal `Last Refresh`, because it is easier to understand
 - `Avg Heat Sink Temperature` is not always present in the HTML
 
+## Credits
+
+This project was shaped by several community efforts and write-ups:
+
+- `Dukat-Gul/SMS-PVS20R1`
+  Directly useful for confirming the `LAN2` / `DeviceDetails` polling model and the general Node-RED extraction approach.
+  Repository: `https://github.com/Dukat-Gul/SMS-PVS20R1`
+
+- Scott Gruby's SunPower monitoring write-up
+  Useful for the overall Pi-in-the-box architecture and the older comment-thread details about `SMSPVS20R1` behavior.
+  Article: `https://blog.gruby.com/2020/04/28/monitoring-a-sunpower-solar-system.html`
+
+- SolarPanelTalk SunPower traffic mirroring thread
+  Useful background on collector traffic, record families, and how older SunPower monitoring traffic behaves.
+  Thread: `https://www.solarpaneltalk.com/forum/solar-panels-for-home/solar-panel-system-equipment/19587-mirroring-intercepting-sunpower-monitoring-traffic`
+
+- SunPower Reddit discussions around older `PVS2` / `SMSPVS20R1` hardware
+  Helpful for confirming that `LAN2` and HTML `DeviceDetails` were the right path on older hardware.
+
 ## Additional Documentation
 
 - `docs/INSTALL.md`
