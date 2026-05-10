@@ -1,0 +1,9 @@
+data/*.json
+data/*.jsonl
+data/collector_logs/
+data/sniffer_logs/
+__pycache__/
+solarproxy/__pycache__/
+*.pyc
+.env.lan2-mqtt
+.env.lan2-poller

@@ -1,0 +1,6 @@
+[project]
+name = "solarproxy"
+version = "0.1.0"
+description = "Local parser and dashboard for SunPower PV Supervisor collector records"
+requires-python = ">=3.9"
+

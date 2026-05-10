@@ -1,0 +1,15 @@
+[Unit]
+Description=SolarProxy local dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=solarproxy
+WorkingDirectory=/opt/solarproxy-smspvs20r1
+ExecStart=/usr/bin/python3 -m solarproxy.web --host 0.0.0.0 --port 8080 --state-file /opt/solarproxy-smspvs20r1/data/latest_state.json
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

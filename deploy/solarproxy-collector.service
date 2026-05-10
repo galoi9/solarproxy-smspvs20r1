@@ -1,0 +1,15 @@
+[Unit]
+Description=SolarProxy collector proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/solarproxy-smspvs20r1
+ExecStart=/usr/bin/python3 -m solarproxy.collector_proxy --host 0.0.0.0 --port 80 --state-file /opt/solarproxy-smspvs20r1/data/latest_state.json --log-dir /opt/solarproxy-smspvs20r1/data/collector_logs --upstream-host collector.sunpowermonitor.com
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

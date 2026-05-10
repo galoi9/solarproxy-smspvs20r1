@@ -1,0 +1,15 @@
+[Unit]
+Description=SolarProxy passive collector sniffer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/solarproxy-smspvs20r1
+ExecStart=/usr/bin/python3 -m solarproxy.sniffer --interface wlan0 --state-file /opt/solarproxy-smspvs20r1/data/latest_state.json --log-dir /opt/solarproxy-smspvs20r1/data/sniffer_logs
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

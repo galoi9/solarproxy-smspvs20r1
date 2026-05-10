@@ -1,0 +1,17 @@
+[Unit]
+Description=SolarProxy LAN2 console poller
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=solarproxy
+WorkingDirectory=/opt/solarproxy-smspvs20r1
+EnvironmentFile=-/opt/solarproxy-smspvs20r1/.env.lan2-poller
+EnvironmentFile=-/opt/solarproxy-smspvs20r1/.env.lan2-mqtt
+ExecStart=/usr/bin/python3 -m solarproxy.lan2_poller --base-url ${LAN2_BASE_URL} --supervisor-serial ${SUPERVISOR_SERIAL} --inverter-serial ${INVERTER_SERIAL} --state-file /opt/solarproxy-smspvs20r1/data/latest_state.json --history-file /opt/solarproxy-smspvs20r1/data/history.jsonl --interval ${POLL_INTERVAL_SECONDS} --mqtt-host ${MQTT_HOST} --mqtt-port ${MQTT_PORT} --mqtt-username ${MQTT_USERNAME} --mqtt-password ${MQTT_PASSWORD}
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
