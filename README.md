@@ -47,19 +47,6 @@ Connect it like this:
 
 That is the intended install model.
 
-## Recommended Repo Name
-
-If you publish this publicly, the current repo name is already the right one:
-
-```text
-solarproxy-smspvs20r1
-```
-
-It tells people:
-
-- this is a solar proxy / bridge
-- it targets the `SMSPVS20R1` hardware family
-
 ## Beginner Install
 
 Read this first:
@@ -90,7 +77,7 @@ That guide assumes a fresh Pi and walks through:
   Parses captured `SMS2DataCollector.aspx` payloads.
 
 - `solarproxy/collector_proxy.py`
-  Transparent collector proxy used during protocol reverse engineering.
+  Collector proxy tooling kept for research and fallback.
 
 - `solarproxy/sniffer.py`
   Passive collector-stream capture helper.
@@ -101,14 +88,15 @@ That guide assumes a fresh Pi and walks through:
 - `deploy/`
   Systemd unit templates and example environment files.
 
-## Main Discovery
+## Supervisor Port Use
 
 For this hardware family:
 
-- `LAN1` is useful for collector/cloud traffic
-- `LAN2` is the local management interface
+- use `LAN2` for the local monitoring connection
 - `LAN2` uses static IP `172.27.153.1/24`
 - `DeviceDetails` returns `HTML`, not JSON
+
+`LAN1` is not the port this project uses for normal installs. It is typically the network/reporting side used by the Supervisor for cloud-bound traffic.
 
 The key local endpoints are:
 
@@ -117,17 +105,9 @@ http://172.27.153.1/cgi-bin/dl_cgi?Command=DeviceList
 http://172.27.153.1/cgi-bin/dl_cgi?Command=DeviceDetails&SerialNumber=<serial>
 ```
 
-## Current Data Source Priority
+## Current Data Source
 
-Preferred source:
-
-- `LAN2` console on `172.27.153.1`
-
-Secondary source:
-
-- intercepted collector traffic on `LAN1`
-
-The dashboard and MQTT integration are intended to use `LAN2` values first, because they are cleaner and directly correspond to inverter menu values.
+The dashboard and MQTT integration are intended to use `LAN2` values, because they are cleaner and directly correspond to inverter menu values.
 
 ## Confirmed Field Meanings
 
@@ -236,22 +216,6 @@ The template service account is:
 ```text
 solarproxy
 ```
-
-## Collector Reverse Engineering
-
-Older reverse engineering work is still included because it explains how the system was decoded.
-
-Observed collector paths:
-
-- `/Command/SMS2DataCollector.aspx`
-- `/Data/SMS2DataCollector.aspx`
-
-Observed record families:
-
-- `100`, `102`, `122` -> session / identity
-- `120`, `130`, `131` -> telemetry / status
-
-For day-to-day use, `LAN2` is the cleaner path.
 
 ## Known Limitations
 
