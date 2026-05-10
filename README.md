@@ -2,6 +2,8 @@
 
 Local monitoring and Home Assistant integration for older SunPower `SMSPVS20R1` / `PVS2` hardware with a Fronius IG inverter.
 
+![SunPower SMSPVS20R1 PV Supervisor](https://i.ebayimg.com/images/g/e4oAAeSwG6Zp1bp3/s-l1600.webp)
+
 This project is designed for a simple Raspberry Pi install:
 
 1. Put a Pi on your home Wi-Fi
