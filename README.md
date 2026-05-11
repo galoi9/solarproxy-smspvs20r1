@@ -4,6 +4,9 @@ Local monitoring and Home Assistant integration for older SunPower `SMSPVS20R1` 
 
 ![SunPower SMSPVS20R1 PV Supervisor](https://i.ebayimg.com/images/g/e4oAAeSwG6Zp1bp3/s-l1600.webp)
 
+> **Project Note**  
+> This project was built largely through iterative collaboration with OpenAI Codex rather than by hand-coding everything directly. It is being shared as a real, tested project, and feedback, corrections, and pull requests are welcome.
+
 This project is designed for a simple Raspberry Pi install:
 
 1. Put a Pi on your home Wi-Fi
